@@ -1,0 +1,36 @@
+rules:
+  - id: same-comparison
+    languages:
+      - go
+    message: Useless comparison of same variable.
+    pattern: $X == $X
+    severity: WARNING
+
+  - id: same-statement
+    languages:
+      - go
+    pattern: |
+      if $E {
+        $S
+      } else {
+        $S
+      }
+    message: if-else-block have the same statements.
+    severity: WARNING
+
+  - id: just-return-expression
+    languages:
+      - go
+    pattern: |
+      func $C(...) bool {
+          if $E {
+            return true
+          }
+          return false
+      }
+    fix: |
+      func $C(...) bool {
+          return $E
+      }
+    message: just return bool expression.
+    severity: WARNING

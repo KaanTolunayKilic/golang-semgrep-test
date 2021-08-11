@@ -1,0 +1,1 @@
+# golang-semgrep-test

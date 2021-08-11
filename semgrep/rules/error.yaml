@@ -1,0 +1,23 @@
+rules:
+  - id: handle-error
+    languages:
+      - go
+    patterns:
+      - pattern-either:
+          - pattern: |
+              func $C(...) {
+                  ...
+                  <... err ...> := ...
+                  ...
+              }
+      - pattern-not: |
+          func $C(...) {
+              ...
+              <... err ...> := ...
+              if <... err ...> {
+                ...
+              }
+              ...
+          }
+    message: Returned error must be handled.
+    severity: WARNING
