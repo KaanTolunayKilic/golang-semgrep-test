@@ -24,5 +24,6 @@ func (c *Comment) Contains(substr string) bool {
 	if strings.Contains(c.Body, substr) || strings.Contains(c.Email, substr) {
 		return true
 	}
+
 	return false
 }
