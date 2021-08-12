@@ -21,5 +21,8 @@ type Comment struct {
 
 // Contains checks if body or email contains substring
 func (c *Comment) Contains(substr string) bool {
-	return strings.Contains(c.Body, substr) || strings.Contains(c.Email, substr)
+	if strings.Contains(c.Body, substr) || strings.Contains(c.Email, substr) {
+		return true
+	}
+	return false
 }
