@@ -80,9 +80,7 @@ func (c *Client) newRequest(method, path string) (*http.Request, error) {
 	url := c.BaseURL.ResolveReference(relPath).String()
 
 	req, err := http.NewRequest(method, url, nil)
-	if err != nil {
-		return nil, err
-	}
+	log.Fatalf("error occured: %s", err)
 	req.Header.Set("Accept", "application/json")
 	return req, nil
 }
